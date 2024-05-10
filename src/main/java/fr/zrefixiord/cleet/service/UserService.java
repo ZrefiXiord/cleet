@@ -13,7 +13,7 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     public Optional<User> getUser(final Integer id){
         return userRepository.findById(id);
     }
@@ -27,6 +27,17 @@ public class UserService {
     }
 
     public User saveUser(final User user) {
+        if(findUserByEmail(user.getEmail()) != null)
+            return null;
+        if(findUserByUsername(user.getUsername()) != null)
+            return null;
         return userRepository.save(user);
+    }
+
+    public User findUserByEmail(final String email) {
+        return userRepository.findByEmail(email);
+    }
+    public User findUserByUsername(final String username) {
+        return userRepository.findByUsername(username);
     }
 }
