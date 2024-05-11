@@ -63,10 +63,10 @@ public class User implements UserDetails, Principal {
     private String displayName;
 
     @Column(name = "followers")
-    private Integer followers;
+    private Integer followers=0;
 
     @Column(name = "following")
-    private Integer following;
+    private Integer following=0;
 
     @Column(name = "token")
     private String token;
