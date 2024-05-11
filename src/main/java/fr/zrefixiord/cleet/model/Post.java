@@ -37,14 +37,14 @@ public class Post {
 
     @ColumnDefault("0")
     @Column(name = "likes", nullable = false)
-    private Integer likes;
+    private Integer likes=0;
 
     @ColumnDefault("0")
     @Column(name = "reposts", nullable = false)
-    private Integer reposts;
+    private Integer reposts=0;
 
     @ColumnDefault("0")
     @Column(name = "replies", nullable = false)
-    private Integer replies;
+    private Integer replies=0;
 
 }
