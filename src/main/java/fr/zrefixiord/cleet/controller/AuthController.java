@@ -3,14 +3,10 @@ package fr.zrefixiord.cleet.controller;
 import fr.zrefixiord.cleet.model.User;
 import fr.zrefixiord.cleet.payload.request.LoginRequest;
 import fr.zrefixiord.cleet.payload.request.RegisterRequest;
-import fr.zrefixiord.cleet.repository.UserRepository;
 import fr.zrefixiord.cleet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;

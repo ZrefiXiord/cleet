@@ -3,13 +3,12 @@ package fr.zrefixiord.cleet.service;
 import fr.zrefixiord.cleet.model.User;
 import fr.zrefixiord.cleet.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService{
 
     @Autowired
     private UserRepository userRepository;
@@ -35,9 +34,10 @@ public class UserService {
     }
 
     public User findUserByEmail(final String email) {
-        return userRepository.findByEmail(email);
+        return userRepository.findByEmail(email).get();
     }
     public User findUserByUsername(final String username) {
-        return userRepository.findByUsername(username);
+        return userRepository.findByUsername(username).get();
     }
+
 }
