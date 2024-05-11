@@ -69,8 +69,7 @@ public class User implements UserDetails, Principal {
     private Integer following;
 
     @Column(name = "token")
-    @JdbcTypeCode(SqlTypes.JSON)
-    private ArrayList<String> token;
+    private String token;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -3,12 +3,15 @@ package fr.zrefixiord.cleet.service;
 import fr.zrefixiord.cleet.model.User;
 import fr.zrefixiord.cleet.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UserService{
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -34,10 +37,14 @@ public class UserService{
     }
 
     public User findUserByEmail(final String email) {
-        return userRepository.findByEmail(email).get();
+        return userRepository.findByEmail(email).orElse(null);
     }
     public User findUserByUsername(final String username) {
-        return userRepository.findByUsername(username).get();
+        return userRepository.findByUsername(username).orElse(null);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
+    }
 }
